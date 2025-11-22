@@ -100,6 +100,32 @@
   font-style: italic;
 }
 
+.selector-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.suggest-feature-link {
+  display: block;
+  text-align: center;
+  padding: 12px;
+  background-color: #a29bfe;
+  border-radius: 6px;
+  color: #1e1e1e;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.suggest-feature-link:hover {
+  background-color: #8c7ae6;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(162, 155, 254, 0.3);
+}
+
 .close-button {
   width: 100%;
   padding: 12px;

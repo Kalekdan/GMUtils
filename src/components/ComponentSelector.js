@@ -52,9 +52,19 @@ const ComponentSelector = ({ onSelect, onClose }) => {
             </div>
           ))}
         </div>
-        <button className="close-button" onClick={onClose}>
-          Cancel
-        </button>
+        <div className="selector-footer">
+          <a 
+            href="https://docs.google.com/forms/d/e/1FAIpQLSf6PwnXoDb5eNZ1BFDprXlqDOPFp5MGKyVmXgfi1sCWhvbULw/viewform?usp=dialog" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="suggest-feature-link"
+          >
+            💡 Suggest a New Feature
+          </a>
+          <button className="close-button" onClick={onClose}>
+            Cancel
+          </button>
+        </div>
       </div>
     </div>
   );
