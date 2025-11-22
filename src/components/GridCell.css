@@ -1,0 +1,167 @@
+.grid-cell {
+  border: 2px solid #444;
+  background-color: #2a2a2a;
+  border-radius: 8px;
+  min-height: 200px;
+  max-height: 100%;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.grid-cell:not(.has-component):hover {
+  border-color: #666;
+  background-color: #333;
+}
+
+.grid-cell.has-component {
+  cursor: default;
+}
+
+.grid-cell.dragging {
+  opacity: 0.5;
+  border-color: #a29bfe;
+}
+
+.grid-cell.drop-target {
+  background-color: #6c5ce7;
+  border-color: #a29bfe;
+  box-shadow: inset 0 0 20px rgba(162, 155, 254, 0.5);
+}
+
+.empty-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: #666;
+  font-size: 48px;
+  user-select: none;
+}
+
+.empty-cell:hover {
+  color: #888;
+}
+
+.cell-controls {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  gap: 5px;
+  z-index: 10;
+}
+
+.delete-button {
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 4px;
+  background-color: #d63031;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  padding: 0;
+}
+
+.delete-button:hover {
+  background-color: #c92626;
+  transform: scale(1.1);
+}
+
+.delete-button:active {
+  transform: scale(0.95);
+}
+
+.resize-edge {
+  position: absolute;
+  display: flex;
+  gap: 4px;
+  opacity: 0;
+  transition: opacity 0.2s;
+  z-index: 9;
+}
+
+.grid-cell:hover .resize-edge {
+  opacity: 1;
+}
+
+.left-edge {
+  left: 2px;
+  top: 50%;
+  transform: translateY(-50%);
+  flex-direction: column;
+}
+
+.right-edge {
+  right: 2px;
+  top: 50%;
+  transform: translateY(-50%);
+  flex-direction: column;
+}
+
+.top-edge {
+  top: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  flex-direction: row;
+}
+
+.bottom-edge {
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  flex-direction: row;
+}
+
+.edge-resize-button {
+  width: 18px;
+  height: 18px;
+  border: 1px solid #333;
+  border-radius: 3px;
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  padding: 0;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+.edge-resize-button.expand {
+  background-color: #6c5ce7;
+}
+
+.edge-resize-button.expand:hover {
+  background-color: #5f4dd1;
+  transform: scale(1.15);
+  box-shadow: 0 4px 12px rgba(108, 92, 231, 0.5);
+}
+
+.edge-resize-button.shrink {
+  background-color: #e17055;
+}
+
+.edge-resize-button.shrink:hover {
+  background-color: #d35400;
+  transform: scale(1.15);
+  box-shadow: 0 4px 12px rgba(211, 84, 0, 0.5);
+}
+
+.edge-resize-button:active {
+  transform: scale(0.9);
+}

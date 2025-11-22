@@ -1,0 +1,77 @@
+.App {
+  min-height: 100vh;
+  background-color: #1a1a1a;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.App-header {
+  background-color: #2a2a2a;
+  padding: 15px 20px;
+  text-align: center;
+  border-bottom: 3px solid #444;
+}
+
+.App-header h1 {
+  margin: 0 0 5px 0;
+  color: #a29bfe;
+  font-size: 28px;
+}
+
+.App-header p {
+  margin: 0;
+  color: #888;
+  font-size: 13px;
+}
+
+.App-footer {
+  background-color: #2a2a2a;
+  padding: 20px;
+  text-align: center;
+  border-top: 3px solid #444;
+  margin-top: auto;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.made-by {
+  margin: 0;
+  color: #888;
+  font-size: 14px;
+}
+
+.made-by a {
+  color: #a29bfe;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.made-by a:hover {
+  color: #6c5ce7;
+  text-decoration: underline;
+}
+
+.bmc-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #5F7FFF;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 14px;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.bmc-button:hover {
+  background-color: #4a63cc;
+  transform: translateY(-1px);
+}

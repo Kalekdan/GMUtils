@@ -1,0 +1,11 @@
+.dm-grid {
+  display: grid;
+  gap: 15px;
+  padding: 15px;
+  flex: 1;
+  width: 95%;
+  margin: 0 auto;
+  background-color: #1a1a1a;
+  overflow: hidden;
+  max-height: calc(100vh - 200px);
+}
