@@ -9,7 +9,7 @@ const ComponentSelector = ({ onSelect, onClose }) => {
         { id: 'dice-roller', name: 'Dice Roller', icon: '🎲' },
         { id: 'notes', name: 'Notes', icon: '📝' },
         { id: 'timer', name: 'Timer', icon: '⏱️' },
-        { id: 'webpage-embed', name: 'Web Page Embed', icon: '🌐', disabled: true },
+        { id: 'webpage-embed', name: 'Web Page Embed', icon: '🌐' },
         { id: 'name-generator', name: 'Name Generator', icon: '📛', disabled: true },
         { id: 'coin-converter', name: 'Coin Converter', icon: '💰', disabled: true },
         { id: 'initiative-tracker', name: 'Initiative Tracker', icon: '🎯', disabled: true },

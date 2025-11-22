@@ -8,6 +8,7 @@ import Spells from './spells/Spells';
 import MagicItems from './magic-items/MagicItems';
 import Equipment from './equipment/Equipment';
 import Conditions from './conditions/Conditions';
+import WebPageEmbed from './webpage-embed/WebPageEmbed';
 
 const GridCell = ({ 
   componentKey,
@@ -72,6 +73,8 @@ const GridCell = ({
       return <Equipment key={componentKey} {...commonProps} />;
     } else if (componentType === 'conditions') {
       return <Conditions key={componentKey} {...commonProps} />;
+    } else if (componentType === 'webpage-embed') {
+      return <WebPageEmbed key={componentKey} {...commonProps} />;
     }
     return null;
   };
