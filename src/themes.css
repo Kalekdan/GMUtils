@@ -99,6 +99,24 @@
   border-color: #6c5ce7;
 }
 
+.theme-light .suggest-feature-link {
+  color: #6c5ce7;
+}
+
+.theme-light .suggest-feature-link:hover {
+  color: #5f4dd1;
+}
+
+.theme-light .close-button {
+  background-color: #f5f5f5;
+  color: #1a1a1a;
+}
+
+.theme-light .close-button:hover {
+  background-color: #ffcccb;
+  color: #d63031;
+}
+
 .theme-light .coming-soon {
   color: #999;
 }
@@ -278,6 +296,47 @@
   background-color: #c0281e;
 }
 
+.theme-light .timer-button {
+  background-color: #f5f5f5;
+  border-color: #ddd;
+  color: #1a1a1a;
+}
+
+.theme-light .timer-button:hover:not(:disabled) {
+  background-color: #e8e4ff;
+  border-color: #6c5ce7;
+}
+
+.theme-light .timer-button.start {
+  background-color: #6c5ce7;
+  color: white;
+}
+
+.theme-light .timer-button.start:hover:not(:disabled) {
+  background-color: #5f4dd1;
+}
+
+.theme-light .quick-timer-button {
+  background-color: #f5f5f5;
+  border-color: #ddd;
+  color: #6c5ce7;
+}
+
+.theme-light .quick-timer-button:hover {
+  background-color: #e8e4ff;
+  border-color: #6c5ce7;
+}
+
+.theme-light .time-input {
+  background-color: #ffffff;
+  border-color: #ddd;
+  color: #1a1a1a;
+}
+
+.theme-light .time-input:focus {
+  border-color: #6c5ce7;
+}
+
 /* Notes - Light Theme */
 .theme-light .notes textarea {
   background-color: #ffffff;
@@ -286,6 +345,33 @@
 }
 
 .theme-light .notes textarea:focus {
+  border-color: #6c5ce7;
+}
+
+.theme-light .toggle-button {
+  background-color: #f5f5f5;
+  border-color: #ddd;
+  color: #6c5ce7;
+}
+
+.theme-light .toggle-button:hover {
+  background-color: #e8e4ff;
+  border-color: #6c5ce7;
+}
+
+.theme-light .toggle-button.active {
+  background-color: #6c5ce7;
+  color: white;
+}
+
+.theme-light .scale-button {
+  background-color: #f5f5f5;
+  border-color: #ddd;
+  color: #6c5ce7;
+}
+
+.theme-light .scale-button:hover {
+  background-color: #e8e4ff;
   border-color: #6c5ce7;
 }
 
@@ -904,6 +990,24 @@
   border-color: #8b4513;
 }
 
+.theme-parchment .suggest-feature-link {
+  color: #8b4513;
+}
+
+.theme-parchment .suggest-feature-link:hover {
+  color: #a0522d;
+}
+
+.theme-parchment .close-button {
+  background-color: #ece0cc;
+  color: #3b2a1d;
+}
+
+.theme-parchment .close-button:hover {
+  background-color: #f0dce0;
+  color: #8b4513;
+}
+
 .theme-parchment .coming-soon {
   color: #a0897a;
 }
@@ -1227,6 +1331,47 @@
   background-color: #b46565;
 }
 
+.theme-parchment .timer-button {
+  background-color: #ece0cc;
+  border-color: #c9b998;
+  color: #3b2a1d;
+}
+
+.theme-parchment .timer-button:hover:not(:disabled) {
+  background-color: #d4c4a8;
+  border-color: #8b4513;
+}
+
+.theme-parchment .timer-button.start {
+  background-color: #8b4513;
+  color: white;
+}
+
+.theme-parchment .timer-button.start:hover:not(:disabled) {
+  background-color: #a0522d;
+}
+
+.theme-parchment .quick-timer-button {
+  background-color: #ece0cc;
+  border-color: #c9b998;
+  color: #8b4513;
+}
+
+.theme-parchment .quick-timer-button:hover {
+  background-color: #d4c4a8;
+  border-color: #8b4513;
+}
+
+.theme-parchment .time-input {
+  background-color: #f9f2e3;
+  border-color: #c9b998;
+  color: #3b2a1d;
+}
+
+.theme-parchment .time-input:focus {
+  border-color: #8b4513;
+}
+
 /* Notes - Parchment Theme */
 .theme-parchment .notes textarea {
   background-color: #f9f2e3;
@@ -1236,6 +1381,33 @@
 }
 
 .theme-parchment .notes textarea:focus {
+  border-color: #8b4513;
+}
+
+.theme-parchment .toggle-button {
+  background-color: #ece0cc;
+  border-color: #c9b998;
+  color: #8b4513;
+}
+
+.theme-parchment .toggle-button:hover {
+  background-color: #d4c4a8;
+  border-color: #8b4513;
+}
+
+.theme-parchment .toggle-button.active {
+  background-color: #8b4513;
+  color: white;
+}
+
+.theme-parchment .scale-button {
+  background-color: #ece0cc;
+  border-color: #c9b998;
+  color: #8b4513;
+}
+
+.theme-parchment .scale-button:hover {
+  background-color: #d4c4a8;
   border-color: #8b4513;
 }
 
@@ -1519,13 +1691,15 @@
   border-bottom-color: #c9b998;
 }
 
-.theme-parchment .magic-item-search {
+.theme-parchment .magic-item-search,
+.theme-parchment .item-search {
   background-color: #f9f2e3;
   border-color: #c9b998;
   color: #3b2a1d;
 }
 
-.theme-parchment .magic-item-search:focus {
+.theme-parchment .magic-item-search:focus,
+.theme-parchment .item-search:focus {
   border-color: #8b4513;
 }
 
@@ -1757,4 +1931,14 @@
 
 .theme-parchment ::-webkit-scrollbar-thumb:hover {
   background-color: #b5a587;
+}
+
+.theme-light .item-search {
+  background-color: #ffffff;
+  border-color: #ddd;
+  color: #1a1a1a;
+}
+
+.theme-light .item-search:focus {
+  border-color: #6c5ce7;
 }
