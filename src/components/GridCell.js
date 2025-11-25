@@ -3,6 +3,8 @@ import './GridCell.css';
 import DiceRoller from './dice-roller/DiceRoller';
 import Notes from './notes/Notes';
 import Timer from './timer/Timer';
+import Clock from './clock/Clock';
+import Checklist from './checklist/Checklist';
 import Monsters from './monsters/Monsters';
 import Spells from './spells/Spells';
 import MagicItems from './magic-items/MagicItems';
@@ -64,6 +66,10 @@ const GridCell = ({
       return <Notes key={componentKey} {...commonProps} />;
     } else if (componentType === 'timer') {
       return <Timer key={componentKey} {...commonProps} />;
+    } else if (componentType === 'clock') {
+      return <Clock key={componentKey} {...commonProps} />;
+    } else if (componentType === 'checklist') {
+      return <Checklist key={componentKey} {...commonProps} />;
     } else if (componentType === 'monsters') {
       return <Monsters key={componentKey} {...commonProps} />;
     } else if (componentType === 'spells') {

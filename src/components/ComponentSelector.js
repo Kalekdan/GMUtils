@@ -9,6 +9,8 @@ const ComponentSelector = ({ onSelect, onClose }) => {
         { id: 'dice-roller', name: 'Dice Roller', icon: '🎲' },
         { id: 'notes', name: 'Notes', icon: '📝' },
         { id: 'timer', name: 'Timer', icon: '⏱️' },
+        { id: 'clock', name: 'Elapsed Time Clock', icon: '🕐' },
+        { id: 'checklist', name: 'Checklist', icon: '✓' },
         { id: 'initiative-tracker', name: 'Initiative Tracker', icon: '🎯' },
         { id: 'webpage-embed', name: 'Web Page Embed', icon: '🌐' },
         { id: 'name-generator', name: 'Name Generator', icon: '📛', disabled: true },

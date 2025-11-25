@@ -1,5 +1,6 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react';
 import './App.css';
+import './themes.css';
 import DMGrid from './components/DMGrid';
 import GridControls from './components/GridControls';
 import ComponentSelector from './components/ComponentSelector';
@@ -17,6 +18,7 @@ function App() {
   const [overlayTimeout, setOverlayTimeout] = useState(8);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [showFullscreenClose, setShowFullscreenClose] = useState(false);
+  const [theme, setTheme] = useState('dark'); // 'dark', 'light', 'parchment'
   const diceTimeoutRef = useRef(null);
 
   const handleSetGlobalDiceResult = useCallback((result) => {
@@ -268,7 +270,7 @@ function App() {
   };
 
   return (
-    <div className={`App ${isFullscreen ? 'fullscreen-mode' : ''}`}>
+    <div className={`App theme-${theme} ${isFullscreen ? 'fullscreen-mode' : ''}`}>
       {!isFullscreen && (
         <header className="App-header">
           <div className="header-content">
@@ -276,13 +278,38 @@ function App() {
               <h1>🎲 The Gamemaster Screen</h1>
               <p>Click on any grid cell to add a component</p>
             </div>
-            <button 
-              className="fullscreen-toggle-btn"
-              onClick={toggleFullscreen}
-              title="Toggle Fullscreen (Esc to exit)"
-            >
-              ⛶
-            </button>
+            <div className="header-controls">
+              <div className="theme-selector">
+                <button 
+                  className={`theme-btn ${theme === 'dark' ? 'active' : ''}`}
+                  onClick={() => setTheme('dark')}
+                  title="Dark Mode"
+                >
+                  🌙
+                </button>
+                <button 
+                  className={`theme-btn ${theme === 'light' ? 'active' : ''}`}
+                  onClick={() => setTheme('light')}
+                  title="Light Mode"
+                >
+                  ☀️
+                </button>
+                <button 
+                  className={`theme-btn ${theme === 'parchment' ? 'active' : ''}`}
+                  onClick={() => setTheme('parchment')}
+                  title="Parchment Mode"
+                >
+                  📜
+                </button>
+              </div>
+              <button 
+                className="fullscreen-toggle-btn"
+                onClick={toggleFullscreen}
+                title="Toggle Fullscreen (Esc to exit)"
+              >
+                ⛶
+              </button>
+            </div>
           </div>
         </header>
       )}

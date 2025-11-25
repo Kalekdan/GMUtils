@@ -198,7 +198,7 @@ const InitiativeTracker = ({ onDragStart, onDragEnd, setGlobalDiceResult }) => {
           className="view-toggle-btn"
           title={viewMode === 'detailed' ? 'Switch to minimal view' : 'Switch to detailed view'}
         >
-          {viewMode === 'detailed' ? '📋' : '📄'}
+          {viewMode === 'detailed' ? '🔽 Minimal' : '🔼 Detailed'}
         </button>
         <button onClick={() => addEntry('ally')} className="add-entry-btn ally">
           ➕ Ally

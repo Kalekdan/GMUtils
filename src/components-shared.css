@@ -1,0 +1,202 @@
+/* Shared Component Styles - Base styles used across multiple components */
+
+/* Base component container */
+.component-base {
+  background-color: #1e1e1e;
+  padding: 15px;
+  border-radius: 8px;
+  color: #ffffff;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow: hidden;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* Component drag handle - shared across all components */
+.component-drag-handle {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 28px;
+  height: 28px;
+  background-color: #6c5ce7;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+  color: white;
+  font-size: 14px;
+  line-height: 1;
+  transition: all 0.2s;
+  user-select: none;
+  z-index: 10;
+}
+
+.component-drag-handle:hover {
+  background-color: #5f4dd1;
+  transform: scale(1.1);
+}
+
+.component-drag-handle:active {
+  cursor: grabbing;
+  transform: scale(0.95);
+}
+
+/* Component headings */
+.component-base h3 {
+  margin: 0;
+  color: #a29bfe;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.component-base h4 {
+  margin: 15px 0 8px 0;
+  color: #a29bfe;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid #444;
+  padding-bottom: 5px;
+}
+
+/* Shared input styles */
+.component-input {
+  width: 100%;
+  padding: 10px;
+  background-color: #2a2a2a;
+  border: 2px solid #444;
+  border-radius: 6px;
+  color: white;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.component-input:focus {
+  outline: none;
+  border-color: #a29bfe;
+}
+
+.component-input::placeholder {
+  color: #666;
+}
+
+/* Shared button styles */
+.component-button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: white;
+}
+
+.component-button:hover {
+  transform: translateY(-1px);
+}
+
+.component-button:active {
+  transform: translateY(0);
+}
+
+.component-button-primary {
+  background-color: #6c5ce7;
+}
+
+.component-button-primary:hover {
+  background-color: #5f4dd1;
+}
+
+.component-button-secondary {
+  background-color: #74b9ff;
+}
+
+.component-button-secondary:hover {
+  background-color: #5fa3e8;
+}
+
+.component-button-danger {
+  background-color: #d63031;
+}
+
+.component-button-danger:hover {
+  background-color: #c0281e;
+}
+
+/* Shared list styles */
+.component-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.component-list-item {
+  padding: 10px;
+  background-color: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.component-list-item:hover {
+  background-color: #333;
+  border-color: #666;
+}
+
+/* Shared scrollbar styles */
+.component-list::-webkit-scrollbar,
+.component-base ::-webkit-scrollbar {
+  width: 8px;
+}
+
+.component-list::-webkit-scrollbar-track,
+.component-base ::-webkit-scrollbar-track {
+  background: #1e1e1e;
+  border-radius: 4px;
+}
+
+.component-list::-webkit-scrollbar-thumb,
+.component-base ::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 4px;
+}
+
+.component-list::-webkit-scrollbar-thumb:hover,
+.component-base ::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Shared loading and error states */
+.component-loading {
+  text-align: center;
+  color: #888;
+  padding: 20px;
+  font-style: italic;
+}
+
+.component-error {
+  background-color: #d63031;
+  color: white;
+  padding: 10px;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 12px;
+}
+
+.component-empty {
+  text-align: center;
+  color: #666;
+  padding: 20px;
+  font-style: italic;
+}
