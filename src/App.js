@@ -7,7 +7,7 @@ import DiceResultOverlay from './components/shared/DiceResultOverlay';
 
 function App() {
   const [rows, setRows] = useState(2);
-  const [cols, setCols] = useState(5);
+  const [cols, setCols] = useState(4);
   const [cells, setCells] = useState({});
   const [cellSpans, setCellSpans] = useState({}); // { cellId: { colSpan, rowSpan } }
   const [selectedCellId, setSelectedCellId] = useState(null);
