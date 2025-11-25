@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from 'react';
+import React, { useState, useRef, useCallback, useEffect } from 'react';
 import './App.css';
 import DMGrid from './components/DMGrid';
 import GridControls from './components/GridControls';
@@ -15,6 +15,8 @@ function App() {
   const [componentInstances, setComponentInstances] = useState({}); // Store component types and keys
   const [globalDiceResult, setGlobalDiceResult] = useState(null);
   const [overlayTimeout, setOverlayTimeout] = useState(8);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [showFullscreenClose, setShowFullscreenClose] = useState(false);
   const diceTimeoutRef = useRef(null);
 
   const handleSetGlobalDiceResult = useCallback((result) => {
@@ -34,6 +36,39 @@ function App() {
       }, overlayTimeout * 1000);
     }
   }, [overlayTimeout]);
+
+  const toggleFullscreen = useCallback(() => {
+    setIsFullscreen(prev => !prev);
+  }, []);
+
+  // Keyboard shortcut for fullscreen (Escape key)
+  useEffect(() => {
+    const handleKeyPress = (e) => {
+      // Exit fullscreen with Escape key
+      if (e.key === 'Escape' && isFullscreen) {
+        e.preventDefault();
+        setIsFullscreen(false);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, [isFullscreen]);
+
+  // Show close button when hovering near top-right in fullscreen
+  useEffect(() => {
+    if (!isFullscreen) return;
+
+    const handleMouseMove = (e) => {
+      // Show button if mouse is within 100px of top and 100px of right edge
+      const nearTop = e.clientY < 100;
+      const nearRight = window.innerWidth - e.clientX < 100;
+      setShowFullscreenClose(nearTop && nearRight);
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, [isFullscreen]);
 
   const handleCellClick = (cellId) => {
     setSelectedCellId(cellId);
@@ -233,38 +268,36 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <div className="header-content">
-          <div>
-            <h1>🎲 DM Screen</h1>
-            <p>Click on any grid cell to add a component</p>
+    <div className={`App ${isFullscreen ? 'fullscreen-mode' : ''}`}>
+      {!isFullscreen && (
+        <header className="App-header">
+          <div className="header-content">
+            <div>
+              <h1>🎲 The Gamemaster Screen</h1>
+              <p>Click on any grid cell to add a component</p>
+            </div>
+            <button 
+              className="fullscreen-toggle-btn"
+              onClick={toggleFullscreen}
+              title="Toggle Fullscreen (Esc to exit)"
+            >
+              ⛶
+            </button>
           </div>
-          <div className="header-settings">
-            <label htmlFor="overlay-timeout" className="setting-label">
-              Dice Overlay Duration:
-            </label>
-            <input
-              id="overlay-timeout"
-              type="number"
-              min="1"
-              max="30"
-              value={overlayTimeout}
-              onChange={(e) => setOverlayTimeout(Math.max(1, Math.min(30, parseInt(e.target.value) || 8)))}
-              className="timeout-input"
-            />
-            <span className="timeout-unit">seconds</span>
-          </div>
-        </div>
-      </header>
-      <GridControls
-        rows={rows}
-        cols={cols}
-        onRowsChange={handleRowsChange}
-        onColsChange={handleColsChange}
-        canReduceRows={canReduceRows}
-        canReduceCols={canReduceCols}
-      />
+        </header>
+      )}
+      {!isFullscreen && (
+        <GridControls
+          rows={rows}
+          cols={cols}
+          onRowsChange={handleRowsChange}
+          onColsChange={handleColsChange}
+          canReduceRows={canReduceRows}
+          canReduceCols={canReduceCols}
+          overlayTimeout={overlayTimeout}
+          onOverlayTimeoutChange={setOverlayTimeout}
+        />
+      )}
       <DMGrid
         rows={rows}
         cols={cols}
@@ -286,14 +319,25 @@ function App() {
         />
       )}
       <DiceResultOverlay diceResult={globalDiceResult} />
-      <footer className="App-footer">
-        <div className="footer-content">
-          <p className="made-by">Made by <a href="https://joerickard.co.uk" target="_blank" rel="noopener noreferrer">Joe Rickard</a></p>
-          <a href="https://www.buymeacoffee.com/joerickard" target="_blank" rel="noopener noreferrer" className="bmc-button">
-            ☕ Buy me a coffee
-          </a>
-        </div>
-      </footer>
+      {isFullscreen && showFullscreenClose && (
+        <button 
+          className="fullscreen-close-btn"
+          onClick={toggleFullscreen}
+          title="Exit Fullscreen (Esc)"
+        >
+          ✕
+        </button>
+      )}
+      {!isFullscreen && (
+        <footer className="App-footer">
+          <div className="footer-content">
+            <p className="made-by">Made by <a href="https://joerickard.co.uk" target="_blank" rel="noopener noreferrer">Joe Rickard</a></p>
+            <a href="https://www.buymeacoffee.com/joerickard" target="_blank" rel="noopener noreferrer" className="bmc-button">
+              ☕ Buy me a coffee
+            </a>
+          </div>
+        </footer>
+      )}
     </div>
   );
 }

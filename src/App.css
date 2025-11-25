@@ -6,6 +6,11 @@
   flex-direction: column;
 }
 
+.App.fullscreen-mode {
+  height: 100vh;
+  overflow: hidden;
+}
+
 .App-header {
   background-color: #2a2a2a;
   padding: 15px 20px;
@@ -17,11 +22,6 @@
   justify-content: space-between;
   align-items: center;
   gap: 20px;
-  flex-wrap: wrap;
-}
-
-.header-content > div:first-child {
-  text-align: left;
 }
 
 .App-header h1 {
@@ -36,42 +36,25 @@
   font-size: 13px;
 }
 
-.header-settings {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background-color: #1a1a1a;
-  padding: 10px 15px;
-  border-radius: 8px;
-  border: 2px solid #444;
-}
-
-.setting-label {
-  color: #888;
-  font-size: 13px;
-  white-space: nowrap;
-}
-
-.timeout-input {
-  width: 60px;
-  padding: 5px 8px;
-  background-color: #2a2a2a;
-  border: 2px solid #444;
-  border-radius: 4px;
-  color: white;
-  font-size: 14px;
+.fullscreen-toggle-btn {
+  background-color: #a29bfe;
+  color: #1a1a1a;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
   font-weight: bold;
-  text-align: center;
 }
 
-.timeout-input:focus {
-  outline: none;
-  border-color: #a29bfe;
+.fullscreen-toggle-btn:hover {
+  background-color: #6c5ce7;
+  transform: scale(1.05);
 }
 
-.timeout-unit {
-  color: #888;
-  font-size: 13px;
+.fullscreen-toggle-btn:active {
+  transform: scale(0.98);
 }
 
 .App-footer {
@@ -123,4 +106,30 @@
 .bmc-button:hover {
   background-color: #4a63cc;
   transform: translateY(-1px);
+}
+
+.fullscreen-close-btn {
+  position: fixed;
+  top: 5px;
+  right: 5px;
+  background-color: rgba(42, 42, 42, 0.95);
+  color: #ff6b6b;
+  border: 2px solid #ff6b6b;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 22px;
+  cursor: pointer;
+  transition: all 0.2s;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.fullscreen-close-btn:hover {
+  background-color: #ff6b6b;
+  color: #1a1a1a;
+  transform: scale(1.1);
 }

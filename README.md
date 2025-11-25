@@ -1,6 +1,6 @@
-# 🎲 GM Utils - The Game Master Screen
+# 🎲 The Gamemaster Screen
 
-A customizable digital DM screen for tabletop RPG game masters, featuring dice rollers, timers, monster stats, spell references, and more utilities to help run your D&D sessions smoothly.
+A customizable digital screen for tabletop RPG game masters, featuring dice rollers, timers, monster stats, spell references, and more utilities to help run your D&D sessions smoothly.
 
 ## 🌐 Live Demo
 

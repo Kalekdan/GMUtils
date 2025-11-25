@@ -1,37 +1,71 @@
+.grid-controls-container {
+  background-color: #2a2a2a;
+  border-bottom: 1px solid #444;
+}
+
+.collapse-toggle {
+  width: 100%;
+  padding: 10px;
+  background-color: #333;
+  border: none;
+  border-bottom: 1px solid #444;
+  color: #a29bfe;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.collapse-toggle:hover {
+  background-color: #3a3a3a;
+}
+
 .grid-controls {
   display: flex;
-  gap: 20px;
-  padding: 12px 20px;
-  background-color: #2a2a2a;
+  gap: 15px;
+  padding: 8px 20px;
   justify-content: center;
   align-items: center;
-  border-bottom: 1px solid #444;
+  flex-wrap: nowrap;
 }
 
 .control-group {
   display: flex;
+  flex-direction: row;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
+  white-space: nowrap;
 }
 
 .control-group label {
-  color: #ffffff;
-  font-weight: bold;
-  font-size: 16px;
+  color: #aaa;
+  font-weight: normal;
+  font-size: 13px;
 }
 
 .control-group input[type="number"] {
-  width: 70px;
-  padding: 8px 12px;
+  width: 50px;
+  padding: 4px 8px;
   background-color: #1e1e1e;
   border: 2px solid #444;
-  border-radius: 6px;
+  border-radius: 4px;
   color: #ffffff;
-  font-size: 16px;
+  font-size: 14px;
   text-align: center;
 }
 
 .control-group input[type="number"]:focus {
   outline: none;
   border-color: #a29bfe;
+}
+
+.control-divider {
+  margin-left: 10px;
+  padding-left: 10px;
+  border-left: 2px solid #444;
+}
+
+.unit-label {
+  color: #888;
+  font-size: 12px;
 }
