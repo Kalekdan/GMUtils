@@ -9,6 +9,7 @@ import MagicItems from './magic-items/MagicItems';
 import Equipment from './equipment/Equipment';
 import Conditions from './conditions/Conditions';
 import WebPageEmbed from './webpage-embed/WebPageEmbed';
+import InitiativeTracker from './initiative-tracker/InitiativeTracker';
 
 const GridCell = ({ 
   componentKey,
@@ -75,6 +76,8 @@ const GridCell = ({
       return <Conditions key={componentKey} {...commonProps} />;
     } else if (componentType === 'webpage-embed') {
       return <WebPageEmbed key={componentKey} {...commonProps} />;
+    } else if (componentType === 'initiative-tracker') {
+      return <InitiativeTracker key={componentKey} {...commonProps} />;
     }
     return null;
   };
