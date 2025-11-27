@@ -1,0 +1,286 @@
+.settings-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+
+.settings-modal {
+  background-color: #1e1e1e;
+  border: 2px solid #444;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.settings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  border-bottom: 2px solid #444;
+  position: sticky;
+  top: 0;
+  background-color: #1e1e1e;
+  z-index: 1;
+}
+
+.settings-header h2 {
+  margin: 0;
+  color: #fff;
+  font-size: 20px;
+}
+
+.close-settings-button {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 32px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+}
+
+.close-settings-button:hover {
+  color: #fff;
+}
+
+.settings-content {
+  padding: 20px;
+}
+
+.settings-section {
+  margin-bottom: 25px;
+}
+
+.settings-section:last-child {
+  margin-bottom: 0;
+}
+
+.settings-section h3 {
+  margin: 0 0 12px 0;
+  color: #74b9ff;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.setting-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  gap: 10px;
+}
+
+.setting-row:last-child {
+  margin-bottom: 0;
+}
+
+.setting-row label {
+  color: #ddd;
+  font-size: 14px;
+  min-width: 100px;
+}
+
+.setting-row input[type="number"] {
+  padding: 6px 8px;
+  background-color: #2a2a2a;
+  border: 2px solid #444;
+  border-radius: 6px;
+  color: white;
+  font-size: 14px;
+  width: 80px;
+}
+
+.setting-row input[type="number"]:focus {
+  outline: none;
+  border-color: #74b9ff;
+}
+
+.setting-row input[type="checkbox"] {
+  margin-right: 8px;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.setting-row input[type="range"] {
+  flex: 1;
+  cursor: pointer;
+}
+
+.scale-value {
+  color: #74b9ff;
+  font-weight: bold;
+  min-width: 50px;
+  text-align: right;
+}
+
+.theme-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.theme-button {
+  flex: 1;
+  padding: 10px 20px;
+  background-color: #2a2a2a;
+  border: 2px solid #444;
+  border-radius: 6px;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.theme-button:hover {
+  background-color: #3a3a3a;
+  border-color: #74b9ff;
+}
+
+.theme-button.active {
+  background-color: #74b9ff;
+  border-color: #74b9ff;
+  color: #1e1e1e;
+  font-weight: bold;
+}
+
+/* Light theme overrides */
+.theme-light .settings-modal {
+  background-color: #ffffff;
+  border-color: #ddd;
+}
+
+.theme-light .settings-header {
+  background-color: #ffffff;
+  border-bottom-color: #ddd;
+}
+
+.theme-light .settings-header h2 {
+  color: #333;
+}
+
+.theme-light .close-settings-button {
+  color: #666;
+}
+
+.theme-light .close-settings-button:hover {
+  color: #333;
+}
+
+.theme-light .settings-section h3 {
+  color: #6c5ce7;
+}
+
+.theme-light .setting-row label {
+  color: #333;
+}
+
+.theme-light .setting-row input[type="number"] {
+  background-color: #f5f5f5;
+  border-color: #ddd;
+  color: #333;
+}
+
+.theme-light .setting-row input[type="number"]:focus {
+  border-color: #6c5ce7;
+}
+
+.theme-light .scale-value {
+  color: #6c5ce7;
+}
+
+.theme-light .theme-button {
+  background-color: #f5f5f5;
+  border-color: #ddd;
+  color: #333;
+}
+
+.theme-light .theme-button:hover {
+  background-color: #e5e5e5;
+  border-color: #6c5ce7;
+}
+
+.theme-light .theme-button.active {
+  background-color: #6c5ce7;
+  border-color: #6c5ce7;
+  color: white;
+}
+
+/* Parchment theme overrides */
+.theme-parchment .settings-modal {
+  background-color: #f4e7d1;
+  border-color: #8b4513;
+}
+
+.theme-parchment .settings-header {
+  background-color: #f4e7d1;
+  border-bottom-color: #8b4513;
+}
+
+.theme-parchment .settings-header h2 {
+  color: #3d2817;
+}
+
+.theme-parchment .close-settings-button {
+  color: #8b4513;
+}
+
+.theme-parchment .close-settings-button:hover {
+  color: #3d2817;
+}
+
+.theme-parchment .settings-section h3 {
+  color: #8b4513;
+}
+
+.theme-parchment .setting-row label {
+  color: #3d2817;
+}
+
+.theme-parchment .setting-row input[type="number"] {
+  background-color: #ece0cc;
+  border-color: #8b4513;
+  color: #3d2817;
+}
+
+.theme-parchment .setting-row input[type="number"]:focus {
+  border-color: #cd853f;
+}
+
+.theme-parchment .scale-value {
+  color: #8b4513;
+}
+
+.theme-parchment .theme-button {
+  background-color: #ece0cc;
+  border-color: #8b4513;
+  color: #3d2817;
+}
+
+.theme-parchment .theme-button:hover {
+  background-color: #d4c4a8;
+  border-color: #cd853f;
+}
+
+.theme-parchment .theme-button.active {
+  background-color: #8b4513;
+  border-color: #8b4513;
+  color: #f4e7d1;
+}

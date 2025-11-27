@@ -42,7 +42,7 @@ const GridCell = ({
   onDragEnter,
   onDragLeave,
   setGlobalDiceResult,
-  overlayTimeout
+  hideTitles
 }) => {
   const handleClick = () => {
     if (!componentKey) {
@@ -57,7 +57,7 @@ const GridCell = ({
       onDragStart: handleDragStart,
       onDragEnd: onDragEnd,
       setGlobalDiceResult,
-      overlayTimeout
+      hideTitles
     };
     
     if (componentType === 'dice-roller') {

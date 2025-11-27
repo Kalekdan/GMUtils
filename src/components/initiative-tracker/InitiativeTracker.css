@@ -286,7 +286,7 @@
   height: 5px;
 }
 
-.initiative-entry.minimal-view .stat-value {
+.initiative-tracker .initiative-entry.minimal-view .stat-value {
   font-size: 14px;
   padding: 4px 8px;
   min-width: 35px;
@@ -451,7 +451,7 @@
   font-weight: normal;
 }
 
-.stat-label {
+.initiative-tracker .stat-label {
   color: #888;
   font-size: 11px;
   margin-left: -2px;
@@ -820,7 +820,7 @@
   flex-direction: column;
 }
 
-.stat-value {
+.initiative-tracker .stat-value {
   font-size: 18px;
   font-weight: bold;
   color: white;
@@ -833,7 +833,7 @@
   transition: background-color 0.2s;
 }
 
-.stat-value:hover {
+.initiative-tracker .stat-value:hover {
   background-color: #3a3a3a;
 }
 

@@ -1,10 +1,15 @@
 .App {
   min-height: 100vh;
+  max-height: 100vh;
   background-color: #1a1a1a;
   color: white;
   display: flex;
   flex-direction: column;
   transition: background-color 0.3s, color 0.3s;
+  overflow: hidden;
+  width: 100vw;
+  max-width: 100vw;
+  box-sizing: border-box;
 }
 
 /* Light Theme */
@@ -67,7 +72,10 @@
 
 .App.fullscreen-mode {
   height: 100vh;
+  max-height: 100vh;
   overflow: hidden;
+  width: 100vw;
+  max-width: 100vw;
 }
 
 .App-header {
@@ -145,6 +153,38 @@
 .App.theme-parchment .theme-btn.active {
   background-color: #8b4513;
   border-color: #a0522d;
+}
+
+.settings-btn {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 2px solid transparent;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: inherit;
+}
+
+.settings-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+.App.theme-light .settings-btn {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.App.theme-light .settings-btn:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.App.theme-parchment .settings-btn {
+  background-color: rgba(139, 69, 19, 0.1);
+}
+
+.App.theme-parchment .settings-btn:hover {
+  background-color: rgba(139, 69, 19, 0.2);
 }
 
 .App-header h1 {
@@ -274,4 +314,9 @@
   background-color: #ff6b6b;
   color: #1a1a1a;
   transform: scale(1.1);
+}
+
+/* Hide titles when setting is enabled - only affects component titles, not settings modal */
+.App.hide-titles .grid-cell h3 {
+  display: none;
 }

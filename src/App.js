@@ -2,9 +2,9 @@ import React, { useState, useRef, useCallback, useEffect } from 'react';
 import './App.css';
 import './themes.css';
 import DMGrid from './components/DMGrid';
-import GridControls from './components/GridControls';
 import ComponentSelector from './components/ComponentSelector';
 import DiceResultOverlay from './components/shared/DiceResultOverlay';
+import Settings from './components/shared/Settings';
 
 function App() {
   const [rows, setRows] = useState(2);
@@ -15,13 +15,24 @@ function App() {
   const [showSelector, setShowSelector] = useState(false);
   const [componentInstances, setComponentInstances] = useState({}); // Store component types and keys
   const [globalDiceResult, setGlobalDiceResult] = useState(null);
-  const [overlayTimeout, setOverlayTimeout] = useState(8);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [showFullscreenClose, setShowFullscreenClose] = useState(false);
-  const [theme, setTheme] = useState('dark'); // 'dark', 'light', 'parchment'
+  const [showSettings, setShowSettings] = useState(false);
+  const [settings, setSettings] = useState({
+    rows: 2,
+    columns: 4,
+    diceOverlay: true,
+    hideTitles: false,
+    theme: 'dark'
+  });
   const diceTimeoutRef = useRef(null);
 
   const handleSetGlobalDiceResult = useCallback((result) => {
+    if (!settings.diceOverlay) {
+      setGlobalDiceResult(null);
+      return;
+    }
+
     // Clear any existing timeout
     if (diceTimeoutRef.current) {
       clearTimeout(diceTimeoutRef.current);
@@ -35,9 +46,9 @@ function App() {
       diceTimeoutRef.current = setTimeout(() => {
         setGlobalDiceResult(null);
         diceTimeoutRef.current = null;
-      }, overlayTimeout * 1000);
+      }, 8000);
     }
-  }, [overlayTimeout]);
+  }, [settings.diceOverlay]);
 
   const toggleFullscreen = useCallback(() => {
     setIsFullscreen(prev => !prev);
@@ -190,7 +201,7 @@ function App() {
   };
 
   // Check if reducing rows would affect any components
-  const canReduceRows = (newRows) => {
+  const canReduceRows = useCallback((newRows) => {
     if (newRows >= rows) return true; // Can always increase
     
     // Check if any component would be cut off
@@ -206,10 +217,10 @@ function App() {
       }
     }
     return true;
-  };
+  }, [rows, cols, cells, cellSpans]);
 
   // Check if reducing columns would affect any components
-  const canReduceCols = (newCols) => {
+  const canReduceCols = useCallback((newCols) => {
     if (newCols >= cols) return true; // Can always increase
     
     // Check if any component would be cut off
@@ -225,14 +236,19 @@ function App() {
       }
     }
     return true;
+  }, [cols, cells, cellSpans]);
+
+  const handleSettingsChange = (newSettings) => {
+    setSettings(newSettings);
   };
 
-  const handleRowsChange = (newRows) => {
+  const handleRowsChange = useCallback((newRows) => {
     if (!canReduceRows(newRows)) {
       return; // Prevent change if it would affect components
     }
     
     setRows(newRows);
+    setSettings(prev => ({ ...prev, rows: newRows }));
     // Clean up cells that are now out of bounds
     const newCells = {};
     const newSpans = {};
@@ -246,14 +262,15 @@ function App() {
     });
     setCells(newCells);
     setCellSpans(newSpans);
-  };
+  }, [cells, cellSpans, cols, canReduceRows]);
 
-  const handleColsChange = (newCols) => {
+  const handleColsChange = useCallback((newCols) => {
     if (!canReduceCols(newCols)) {
       return; // Prevent change if it would affect components
     }
     
     setCols(newCols);
+    setSettings(prev => ({ ...prev, columns: newCols }));
     // Clean up cells that are now out of bounds
     const newCells = {};
     const newSpans = {};
@@ -267,10 +284,22 @@ function App() {
     });
     setCells(newCells);
     setCellSpans(newSpans);
-  };
+  }, [cells, cellSpans, rows, canReduceCols]);
+
+  // Sync rows and cols with settings
+  useEffect(() => {
+    if (settings.rows !== rows) {
+      handleRowsChange(settings.rows);
+    }
+    if (settings.columns !== cols) {
+      handleColsChange(settings.columns);
+    }
+  }, [settings.rows, settings.columns, rows, cols, handleRowsChange, handleColsChange]);
 
   return (
-    <div className={`App theme-${theme} ${isFullscreen ? 'fullscreen-mode' : ''}`}>
+    <div 
+      className={`App theme-${settings.theme} ${isFullscreen ? 'fullscreen-mode' : ''} ${settings.hideTitles ? 'hide-titles' : ''}`}
+    >
       {!isFullscreen && (
         <header className="App-header">
           <div className="header-content">
@@ -279,29 +308,13 @@ function App() {
               <p>Click on any grid cell to add a component</p>
             </div>
             <div className="header-controls">
-              <div className="theme-selector">
-                <button 
-                  className={`theme-btn ${theme === 'dark' ? 'active' : ''}`}
-                  onClick={() => setTheme('dark')}
-                  title="Dark Mode"
-                >
-                  🌙
-                </button>
-                <button 
-                  className={`theme-btn ${theme === 'light' ? 'active' : ''}`}
-                  onClick={() => setTheme('light')}
-                  title="Light Mode"
-                >
-                  ☀️
-                </button>
-                <button 
-                  className={`theme-btn ${theme === 'parchment' ? 'active' : ''}`}
-                  onClick={() => setTheme('parchment')}
-                  title="Parchment Mode"
-                >
-                  📜
-                </button>
-              </div>
+              <button 
+                className="settings-btn"
+                onClick={() => setShowSettings(true)}
+                title="Settings"
+              >
+                ⚙️
+              </button>
               <button 
                 className="fullscreen-toggle-btn"
                 onClick={toggleFullscreen}
@@ -312,18 +325,6 @@ function App() {
             </div>
           </div>
         </header>
-      )}
-      {!isFullscreen && (
-        <GridControls
-          rows={rows}
-          cols={cols}
-          onRowsChange={handleRowsChange}
-          onColsChange={handleColsChange}
-          canReduceRows={canReduceRows}
-          canReduceCols={canReduceCols}
-          overlayTimeout={overlayTimeout}
-          onOverlayTimeoutChange={setOverlayTimeout}
-        />
       )}
       <DMGrid
         rows={rows}
@@ -337,7 +338,7 @@ function App() {
         onComponentMove={handleComponentMove}
         globalDiceResult={globalDiceResult}
         setGlobalDiceResult={handleSetGlobalDiceResult}
-        overlayTimeout={overlayTimeout}
+        hideTitles={settings.hideTitles}
       />
       {showSelector && (
         <ComponentSelector
@@ -345,7 +346,13 @@ function App() {
           onClose={handleCloseSelector}
         />
       )}
-      <DiceResultOverlay diceResult={globalDiceResult} />
+      <Settings
+        isOpen={showSettings}
+        onClose={() => setShowSettings(false)}
+        settings={settings}
+        onSettingsChange={handleSettingsChange}
+      />
+      {settings.diceOverlay && <DiceResultOverlay diceResult={globalDiceResult} />}
       {isFullscreen && showFullscreenClose && (
         <button 
           className="fullscreen-close-btn"
