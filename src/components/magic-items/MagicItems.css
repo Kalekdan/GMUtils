@@ -1,13 +1,13 @@
 .magic-items {
   background-color: #1e1e1e;
-  padding: 15px;
+  padding: 8px;
   border-radius: 8px;
   color: #ffffff;
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 6px;
   overflow: hidden;
   box-sizing: border-box;
   position: relative;
@@ -15,9 +15,9 @@
 
 .magic-items h3 {
   margin: 0;
-  color: #ffd700;
+  color: #ff6b6b;
   text-align: center;
-  font-size: 18px;
+  font-size: 14px;
 }
 
 .magic-items h4 {
