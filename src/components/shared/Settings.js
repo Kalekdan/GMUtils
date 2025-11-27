@@ -67,6 +67,20 @@ const Settings = ({ isOpen, onClose, settings, onSettingsChange }) => {
                 Show Dice Roll Overlay
               </label>
             </div>
+            {settings.diceOverlay && (
+              <div className="setting-row">
+                <label htmlFor="diceOverlayDuration">Dice Overlay Duration: {(settings.diceOverlayDuration / 1000).toFixed(1)}s</label>
+                <input
+                  type="range"
+                  id="diceOverlayDuration"
+                  min="1000"
+                  max="10000"
+                  step="500"
+                  value={settings.diceOverlayDuration}
+                  onChange={(e) => handleChange('diceOverlayDuration', parseInt(e.target.value))}
+                />
+              </div>
+            )}
           </div>
 
           <div className="settings-section">

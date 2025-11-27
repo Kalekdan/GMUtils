@@ -33,15 +33,17 @@ const DiceResultOverlay = ({ diceResult }) => {
         exitTimeoutRef.current = null;
       }, 300); // Match animation duration
     }
+  }, [diceResult, displayResult, isExiting]);
 
+  // Cleanup timeout on unmount
+  useEffect(() => {
     return () => {
-      // Only clear timeout on unmount, not on every render
-      if (!diceResult && exitTimeoutRef.current) {
+      if (exitTimeoutRef.current) {
         clearTimeout(exitTimeoutRef.current);
         exitTimeoutRef.current = null;
       }
     };
-  }, [diceResult, displayResult, isExiting]);
+  }, []);
 
   if (!displayResult) return null;
 

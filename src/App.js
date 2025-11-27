@@ -22,6 +22,7 @@ function App() {
     rows: 2,
     columns: 4,
     diceOverlay: true,
+    diceOverlayDuration: 3000,
     hideTitles: false,
     theme: 'dark'
   });
@@ -46,9 +47,9 @@ function App() {
       diceTimeoutRef.current = setTimeout(() => {
         setGlobalDiceResult(null);
         diceTimeoutRef.current = null;
-      }, 8000);
+      }, settings.diceOverlayDuration);
     }
-  }, [settings.diceOverlay]);
+  }, [settings.diceOverlay, settings.diceOverlayDuration]);
 
   const toggleFullscreen = useCallback(() => {
     setIsFullscreen(prev => !prev);
