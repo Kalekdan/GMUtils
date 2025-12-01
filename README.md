@@ -7,14 +7,10 @@ A customizable digital screen for tabletop RPG game masters, featuring dice roll
 Try it now at: **[thegamemasterscreen.com](https://thegamemasterscreen.com)**
 
 ## ✨ Features
-
-![Empty Grid View](https://github.com/user-attachments/assets/0f92534f-11a0-4377-ac58-3ff64d1c5414)
 *Customizable grid layout - click any cell to add a component, resize and move to wherever you need them*
-
-![Component Selector](https://github.com/user-attachments/assets/f4211153-7688-4287-bcad-a7b2f42d37d0)
 *Wide variety of utilities and D&D 2024 Edition rules reference components*
 
-![Multiple Components](https://github.com/user-attachments/assets/d1cc1054-de43-4ad8-8185-d15da8b8a80e)
+![Multiple Components](https://github.com/user-attachments/assets/774f9cb9-a5b4-496d-a725-d8ed5ceaf16f)
 *Example screen with Dice Roller, Monsters, and Timer components*
 
 ### Available Components
@@ -24,6 +20,7 @@ Try it now at: **[thegamemasterscreen.com](https://thegamemasterscreen.com)**
 - 📝 **Notes** - Take session notes
 - ⏱️ **Timer** - Countdown timer for tracking time-sensitive events
 - 🌐 **Web Page Embed** - Embed external web pages
+- and many more...
 
 **D&D 2024 Edition Rules:**
 - 🐉 **Monsters** - Quick monster stat lookup
@@ -48,8 +45,8 @@ Try it now at: **[thegamemasterscreen.com](https://thegamemasterscreen.com)**
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/Kalekdan/GMUtils.git
-   cd GMUtils
+   git clone https://github.com/Kalekdan/thegamemasterscreen.git
+   cd thegamemasterscreen
    ```
 
 2. Install dependencies:
