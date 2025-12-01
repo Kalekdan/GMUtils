@@ -296,6 +296,27 @@
   transform: translateY(-1px);
 }
 
+.github-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  color: #888;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: color 0.2s, background-color 0.2s, transform 0.1s;
+}
+
+.github-link:hover {
+  color: #a29bfe;
+  background-color: rgba(162, 155, 254, 0.1);
+  transform: translateY(-1px);
+}
+
+.github-link svg {
+  display: block;
+}
+
 .fullscreen-close-btn {
   position: fixed;
   top: 5px;
